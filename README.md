@@ -79,4 +79,4 @@ python run.py
 
 ## 👨‍💻 Author
 
-Ali Krasniqi
+Ali Krasniqi - Piloti

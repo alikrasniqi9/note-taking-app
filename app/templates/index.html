@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="app">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo">📄</div>
+
+        <ul>
+            <li class="active"><i class="fa-regular fa-file"></i> Të gjitha</li>
+            <li><i class="fa-solid fa-user"></i> Personale</li>
+            <li><i class="fa-solid fa-briefcase"></i> Punë</li>
+            <li><i class="fa-regular fa-lightbulb"></i> Ide</li>
+        </ul>
+
+        <div class="notes-count">1 SHËNIM</div>
+    </div>
+
+    <!-- NOTES LIST -->
+    <div class="notes-list">
+
+        <div class="notes-header">
+            <h1>Shënimet</h1>
+            <div class="actions">
+                <span>＋</span>
+            </div>
+        </div>
+
+        <input type="text" placeholder="Kërko" class="search">
+
+        <div class="note-item active">
+            <h3>Mirë se vini në Shënime</h3>
+            <span class="time">17:03</span>
+            <div class="tags">
+                <span>#mirëseardhje</span>
+                <span>#tutorial</span>
+            </div>
+            <p>Kjo është shënimi juaj i parë. Filloni t...</p>
+        </div>
+
+    </div>
+
+    <!-- NOTE CONTENT -->
+    <div class="note-view">
+
+        <form method="POST" class="note-form">
+            <textarea name="content" class="note-editor" placeholder="Fillo të shkruash..."></textarea>
+            <button type="submit" class="save-btn">Save</button>
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}

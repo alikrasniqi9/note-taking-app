@@ -187,3 +187,18 @@ hr {
     border: none;
     border-top: 1px solid #ddd;
 }
+
+.notes-list a {
+    text-decoration: none;   /* heq underline */
+    color: inherit;          /* heq ngjyrën blu */
+    display: block;          /* bën gjithë div clickable */
+}
+
+.notes-list a:hover {
+    background: #f0f0f2;
+    border-radius: 10px;
+}
+
+.note-item:hover {
+    background: #f3f3f5;
+}

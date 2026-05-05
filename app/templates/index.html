@@ -14,7 +14,8 @@
             <li><i class="fa-regular fa-lightbulb"></i> Ide</li>
         </ul>
 
-        <div class="notes-count">1 SHËNIM</div>
+        <div class="notes-count">{{ notes|length }} SHËNIME</div>
+        <hr>
     </div>
 
     <!-- NOTES LIST -->
@@ -30,17 +31,19 @@
         <input type="text" placeholder="Kërko" class="search">
 
         {% for note in notes %}
-        <div class="note-item {% if loop.first %}active{% endif %}">
-            <h3>{{ note.title[:15] }}</h3>
+        <a href="{{ url_for('notes.get_note', id=note.id) }}">
+            <div class="note-item  {% if selected_note and note.id == selected_note.id %}active{% endif %}">
+                <h3>{{ note.title[:15] }}</h3>
 
-            <span class="time">
-                {{ note.created_at.strftime('%H:%M') }}
-            </span>
+                <span class="time">
+                    {{ note.created_at.strftime('%H:%M') }}
+                </span>
 
-            <p>
-                {{ note.content[:72] }}
-            </p>
-        </div>
+                <p>
+                    {{ note.content[:72] }}
+                </p>
+            </div>
+        </a>
         {% endfor %}
     </div>
 
@@ -48,8 +51,11 @@
     <div class="note-view">
 
         <form class="note-form" method="POST" action="{{ url_for('notes.index')}}">
-            <textarea name="title" class="title-editor" placeholder="Titulli.."></textarea><hr>
-            <textarea name="content" class="note-editor" placeholder="Fillo të shkruash.."></textarea>
+            <textarea name="title" class="title-editor" placeholder="Titulli..">{{ selected_note.title if selected_note else '' }}</textarea>
+
+            <hr>
+
+            <textarea name="content" class="note-editor" placeholder="Fillo të shkruash..">{{ selected_note.content if selected_note else '' }}</textarea>
             <button type="submit" class="save-btn">Save</button>
         </form>
 

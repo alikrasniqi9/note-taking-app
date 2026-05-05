@@ -25,3 +25,10 @@ def index():
     notes = Note.query.order_by(Note.created_at.desc()).all()
 
     return render_template('index.html',notes=notes)
+
+@notes_bp.route('/<int:id>')
+def get_note(id):
+    note = Note.query.get_or_404(id)
+    notes = Note.query.order_by(Note.created_at.desc()).all()
+
+    return render_template('index.html',notes=notes,selected_note=note)

@@ -29,22 +29,25 @@
 
         <input type="text" placeholder="Kërko" class="search">
 
+        {% for note in notes %}
         <div class="note-item active">
-            <h3>Mirë se vini në Shënime</h3>
-            <span class="time">17:03</span>
-            <div class="tags">
-                <span>#mirëseardhje</span>
-                <span>#tutorial</span>
-            </div>
-            <p>Kjo është shënimi juaj i parë. Filloni t...</p>
-        </div>
+            <h3>{{ note.title }}</h3>
 
+            <span class="time">
+                {{ note.created_at.strftime('%H:%M') }}
+            </span>
+
+            <p>
+                {{ note.content[:50] }}
+            </p>
+        </div>
+        {% endfor %}
     </div>
 
     <!-- NOTE CONTENT -->
     <div class="note-view">
 
-        <form method="POST" class="note-form">
+        <form class="note-form" method="POST" action="{{ url_for('notes.index')}}">
             <textarea name="content" class="note-editor" placeholder="Fillo të shkruash..."></textarea>
             <button type="submit" class="save-btn">Save</button>
         </form>

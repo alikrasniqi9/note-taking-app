@@ -64,7 +64,7 @@ body {
 }
 
 .notes-header h1 {
-    font-size: 30px;   /* 🔥 fix */
+    font-size: 30px;
 }
 
 .actions span {
@@ -162,4 +162,28 @@ body {
 
 .save-btn:hover {
     background: darkgrey;
+}
+
+.title-editor {
+    width: 100%;
+    border: none;
+    outline: none;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    padding: 10px 20px;
+    margin-bottom: px;
+
+    background: transparent;
+
+    height: auto;
+    flex: none;
+}
+
+hr {
+    margin-top: -25px;
+    margin-bottom: 10px;
+    border: none;
+    border-top: 1px solid #ddd;
 }

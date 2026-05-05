@@ -30,15 +30,15 @@
         <input type="text" placeholder="Kërko" class="search">
 
         {% for note in notes %}
-        <div class="note-item active">
-            <h3>{{ note.title }}</h3>
+        <div class="note-item {% if loop.first %}active{% endif %}">
+            <h3>{{ note.title[:15] }}</h3>
 
             <span class="time">
                 {{ note.created_at.strftime('%H:%M') }}
             </span>
 
             <p>
-                {{ note.content[:50] }}
+                {{ note.content[:72] }}
             </p>
         </div>
         {% endfor %}
@@ -48,7 +48,8 @@
     <div class="note-view">
 
         <form class="note-form" method="POST" action="{{ url_for('notes.index')}}">
-            <textarea name="content" class="note-editor" placeholder="Fillo të shkruash..."></textarea>
+            <textarea name="title" class="title-editor" placeholder="Titulli.."></textarea><hr>
+            <textarea name="content" class="note-editor" placeholder="Fillo të shkruash.."></textarea>
             <button type="submit" class="save-btn">Save</button>
         </form>
 

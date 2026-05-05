@@ -9,10 +9,11 @@ notes_bp = Blueprint('notes', __name__)
 def index():
     if request.method == 'POST':
         content = request.form.get('content')
+        title = request.form.get('title')
 
         if content:
             note = Note(
-                title='Pa titull',
+                title=title if title else 'I pa ftyr/pa titull',
                 content=content
             )
 

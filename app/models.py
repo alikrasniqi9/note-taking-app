@@ -6,5 +6,5 @@ class Note(db.Model):
 
     title = db.Column(db.String(200))
     content = db.Column(db.Text)
-
+    category = db.Column(db.String)
     created_at = db.Column(db.DateTime,default=datetime.utcnow)

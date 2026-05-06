@@ -53,9 +53,12 @@ def delete(id):
 
 @notes_bp.route('/create', methods=['POST'])
 def create():
+    category = request.form.get('category')
+
     note = Note(
         title='New Note',
-        content='Freshly created note..'
+        content='Freshly created note..',
+        category=category
     )
 
     db.session.add(note)
@@ -68,13 +71,27 @@ def update(id):
     note = Note.query.get_or_404(id)
     title = request.form.get('title')
     content = request.form.get('content')
+    category = request.form.get('category')
 
     note.title = title
     note.content = content
+    note.category = category
 
     db.session.commit()
 
     return redirect(url_for('notes.get_note',id=note.id))
+
+@notes_bp.route('/category/<category>')
+def category(category):
+    notes = Note.query.filter_by(
+        category=category
+    ).order_by(
+        Note.created_at.desc()
+    ).all()
+
+    return render_template('index.html', notes=notes)
+
+
 
 
 

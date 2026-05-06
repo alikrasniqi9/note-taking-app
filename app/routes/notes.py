@@ -35,9 +35,21 @@ def get_note(id):
 
 @notes_bp.route('/delete/<int:id>', methods=['POST'])
 def delete(id):
-    note = Note.query.get(id)
+    note = Note.query.get_or_404(id)
 
     db.session.delete(note)
     db.session.commit()
 
     return redirect(url_for('notes.index'))
+
+@notes_bp.route('/create', methods=['POST'])
+def create():
+    note = Note(
+        title='New Note',
+        content='Freshly created note..'
+    )
+
+    db.session.add(note)
+    db.session.commit()
+
+    return redirect(url_for('notes.get_note', id=note.id))

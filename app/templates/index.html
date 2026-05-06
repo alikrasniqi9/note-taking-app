@@ -24,7 +24,9 @@
         <div class="notes-header">
             <h1>Shënimet</h1>
             <div class="actions">
-                <span>＋</span>
+                <form method="post" action="{{ url_for('notes.create') }}">
+                    <button id="btn2" type="submit"><span>＋</span></button>
+                </form>
             </div>
         </div>
 

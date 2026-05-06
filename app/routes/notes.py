@@ -26,9 +26,18 @@ def index():
 
     return render_template('index.html',notes=notes)
 
-@notes_bp.route('/<int:id>')
+@notes_bp.route('/get/<int:id>')
 def get_note(id):
     note = Note.query.get_or_404(id)
     notes = Note.query.order_by(Note.created_at.desc()).all()
 
     return render_template('index.html',notes=notes,selected_note=note)
+
+@notes_bp.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    note = Note.query.get(id)
+
+    db.session.delete(note)
+    db.session.commit()
+
+    return redirect(url_for('notes.index'))

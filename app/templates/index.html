@@ -33,7 +33,13 @@
         {% for note in notes %}
         <a href="{{ url_for('notes.get_note', id=note.id) }}">
             <div class="note-item  {% if selected_note and note.id == selected_note.id %}active{% endif %}">
-                <h3>{{ note.title[:15] }}</h3>
+
+                <div class="note-top">
+                    <h3>{{ note.title[:15] }}</h3>
+                    <form method="post" action="{{ url_for('notes.delete', id=note.id) }}">
+                        <button type="submit" id="btn1"><i class="fa-regular fa-trash-can delete-icon"></i></button>
+                    </form>
+                </div>
 
                 <span class="time">
                     {{ note.created_at.strftime('%H:%M') }}

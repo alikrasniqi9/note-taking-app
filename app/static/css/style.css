@@ -202,3 +202,26 @@ hr {
 .note-item:hover {
     background: #f3f3f5;
 }
+
+.note-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-icon {
+    opacity: 0;
+    color: grey;
+    transition: 0.1s;
+}
+
+/* kur hover note */
+.note-item:hover .delete-icon {
+    opacity: 1;
+}
+
+#btn1{
+background: none;
+border: none;
+cursor: pointer;
+}

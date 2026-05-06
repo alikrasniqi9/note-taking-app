@@ -22,7 +22,16 @@ def index():
 
         return redirect(url_for('notes.index'))
 
-    notes = Note.query.order_by(Note.created_at.desc()).all()
+    q = request.args.get('q')
+
+    if q:
+        notes = Note.query.filter(
+            Note.title.contains(q) |
+            Note.content.contains(q)
+        ).order_by(Note.created_at.desc()).all()
+
+    else:
+        notes = Note.query.order_by(Note.created_at.desc()).all()
 
     return render_template('index.html',notes=notes)
 

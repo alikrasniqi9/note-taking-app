@@ -30,7 +30,15 @@
             </div>
         </div>
 
-        <input type="text" placeholder="Kërko" class="search">
+        <form method="GET" action="{{ url_for('notes.index') }}">
+            <input
+                type="text"
+                name="q"
+                placeholder="Kërko"
+                class="search"
+                value="{{ request.args.get('q', '') }}"
+            >
+        </form>
 
         {% for note in notes %}
         <a href="{{ url_for('notes.get_note', id=note.id) }}">

@@ -1,3 +1,5 @@
+![App Screenshot](screenshot.png)
+
 # 📝 Notes App (Flask)
 
 A modern note-taking web application built with Flask and SQLAlchemy.

@@ -53,3 +53,19 @@ def create():
     db.session.commit()
 
     return redirect(url_for('notes.get_note', id=note.id))
+
+@notes_bp.route('/update/<int:id>', methods=['POST'])
+def update(id):
+    note = Note.query.get_or_404(id)
+    title = request.form.get('title')
+    content = request.form.get('content')
+
+    note.title = title
+    note.content = content
+
+    db.session.commit()
+
+    return redirect(url_for('notes.get_note',id=note.id))
+
+
+

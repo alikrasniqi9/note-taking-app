@@ -58,7 +58,7 @@
     <!-- NOTE CONTENT -->
     <div class="note-view">
 
-        <form class="note-form" method="POST" action="{{ url_for('notes.index')}}">
+        <form class="note-form" method="POST" action="{{ url_for('notes.update', id=selected_note.id) if selected_note else url_for('notes.create')}}">
             <textarea name="title" class="title-editor" placeholder="Titulli..">{{ selected_note.title if selected_note else '' }}</textarea>
 
             <hr>
